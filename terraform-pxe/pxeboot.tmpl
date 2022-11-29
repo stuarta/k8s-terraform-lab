@@ -1,0 +1,6 @@
+DEFAULT pxeboot
+TIMEOUT 20
+PROMPT 0
+LABEL pxeboot
+    KERNEL http://${pxeserver}/${kernel}
+    APPEND initrd=http://${pxeserver}/${initrd} coreos.live.rootfs_url=http://${pxeserver}/${rootfs} coreos.inst.install_dev=/dev/sda coreos.inst.ignition_url=http://${pxeserver}/${ignition_file}
