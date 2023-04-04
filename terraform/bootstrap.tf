@@ -1,6 +1,6 @@
 resource "libvirt_volume" "bootstrap_vol" {
     name = "bootstrap.qcow2"
-    base_volume_id = os.image
+    base_volume_id = var.os.image
     size = var.master.disk * 1024 * 1024 * 1024
 }
 

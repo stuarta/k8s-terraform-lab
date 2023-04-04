@@ -23,20 +23,20 @@ resource "libvirt_network" "k8s_network" {
 
 resource "libvirt_volume" "os_image" {
     name = "os_image"
-    source = os.image
+    source = var.os.image
 }
 
 resource "libvirt_volume" "master_vol" {
     count = var.master.count
     name = "master-${count.index}.qcow2"
-    base_volume_id = os.image
+    base_volume_id = var.os.image
     size = var.master.disk * 1024 * 1024 * 1024
 }
 
 resource "libvirt_volume" "worker_vol" {
     count = var.worker.count
     name = "worker-${count.index}.qcow2"
-    base_volume_id = os.image
+    base_volume_id = var.os.image
     size = var.worker.disk * 1024 * 1024 * 1024
 }
 
